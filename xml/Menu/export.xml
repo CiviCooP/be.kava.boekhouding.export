@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/boekhouding-exports</path>
+    <page_callback>CRM_Export_Page_BoekhoudingExports</page_callback>
+    <title>BoekhoudingExports</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/boekhouding-export-form</path>
+    <page_callback>CRM_Export_Form_BoekhoudingExport</page_callback>
+    <title>BoekhoudingExport</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>

@@ -22,6 +22,12 @@ class CRM_Export_Page_BoekhoudingExports extends CRM_Core_Page {
 			$row['periode_stop'] 	= date("d-m-Y", strtotime($row['periode_stop']));
 			$row['created_at'] 		= date("d-m-Y", strtotime($row['created_at']));
 			$row['verwijderen']		= CRM_Utils_System::url('civicrm/boekhouding-exports', 'rid='.$row['id'].'&action=verwijderen');
+			
+			$pathPart = substr(__DIR__, stripos(__DIR__, "sites"));
+			$pathPart = substr($pathPart, 0, stripos($pathPart, "CRM"));
+			$path = str_replace('\\', "/", $pathPart);
+			
+			$row['filenameurl']		= substr($_SERVER['REQUEST_URI'], 0, stripos($_SERVER['REQUEST_URI'], "civicrm")).$path."files"."/".$row['filename'];
 		}
 		return $rows;
 	}

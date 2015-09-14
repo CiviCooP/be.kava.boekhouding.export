@@ -16,7 +16,7 @@
 				<tr>
 					<td>{ $export.periode_start } t/m { $export.periode_stop }</td>
 					<td>{ $export.contact_id } op { $export.created_at }</td>
-					<td><a href="#">{ $export.filename }</td>
+					<td><a href="{ $export.filenameurl }">{ $export.filename }</td>
 					<td><a href="{ $export.verwijderen }">Verwijderen</a></td>
 				</tr>
 			{/foreach}

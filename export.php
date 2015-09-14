@@ -82,3 +82,34 @@ function export_civicrm_navigationMenu(&$params) {
   );
   _export_civix_insert_navigation_menu($params, 'Events', $boekhoudingExport);
 }
+
+
+function export_civicrm_pre($op, $objectName, $id, &$params){ 
+	if($objectName == "Contribution") {
+		try { 
+			$customGroup = civicrm_api3('CustomGroup', 'GetSingle', array('name' => 'aanvullende_info'));
+			$customField = civicrm_api3('CustomField', 'GetSingle', array('name' => 'volgnummer', "custom_group_id" => $customGroup['id']));
+			if(isset($params['custom'][$customField['id']])) {
+				$arrayKey = key($params['custom'][$customField['id']]);
+				if($arrayKey == "-1") {
+					$params['custom'][$customField['id']][$arrayKey]['value'] = hoogsteCount($customGroup, $customField);
+				} else {
+					if(intVal($params['custom'][$customField['id']][$arrayKey]['value']) == 0) {
+						$params['custom'][$customField['id']][$arrayKey]['value'] = hoogsteCount($customGroup, $customField);
+					} 
+				}
+			}
+		} catch (Exception $e) {}
+	}
+}
+
+function hoogsteCount($cG, $cF) {
+	$query = "SELECT `".$cF['column_name']."` as `volgnummer` FROM `".$cG['table_name']."` ORDER BY `".$cF['column_name']."` DESC"; 
+	$dbData = CRM_Core_DAO::executeQuery($query);
+	if($dbData->N) {
+		$dbData->fetch();
+		return str_pad((intVal($dbData->volgnummer)+1), 9, "0", STR_PAD_LEFT);
+	} else {
+		return "000000001";
+	}
+}

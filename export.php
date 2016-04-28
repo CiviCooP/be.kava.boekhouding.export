@@ -87,8 +87,8 @@ function export_civicrm_navigationMenu(&$params) {
 function export_civicrm_pre($op, $objectName, $id, &$params){ 
 	if($objectName == "Contribution") {
 		try { 
-			$customGroup = civicrm_api3('CustomGroup', 'GetSingle', array('name' => 'aanvullende_info'));
-			$customField = civicrm_api3('CustomField', 'GetSingle', array('name' => 'volgnummer', "custom_group_id" => $customGroup['id']));
+			$customGroup = civicrm_api3('CustomGroup', 'GetSingle', array('name' => 'event_registration'));
+			$customField = civicrm_api3('CustomField', 'GetSingle', array('name' => 'Artikelcode', "custom_group_id" => $customGroup['id']));
 			if(isset($params['custom'][$customField['id']])) {
 				$arrayKey = key($params['custom'][$customField['id']]);
 				if($arrayKey == "-1") {

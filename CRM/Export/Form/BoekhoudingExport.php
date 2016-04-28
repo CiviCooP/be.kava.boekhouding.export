@@ -25,7 +25,7 @@ class CRM_Export_Form_BoekhoudingExport extends CRM_Core_Form {
 	}
 	
 	function getFieldsAndSettings() {
-		$this->statusses['event_fee'] 						= $this->civiapi('FinancialType', 'GetSingle', array("name" => "Event Fee"));
+		$this->statusses['event_fee'] 						= $this->civiapi('FinancialType', 'GetSingle', array("name" => "Kosten deelname evenement"));
 		$this->statusses['contribution']['pending'] 		= $this->civiapi('OptionValue', 'GetSingle', array('option_group_id' => 'contribution_status', 'name' => 'Pending'));
 		$this->statusses['contribution']['in_progress'] 	= $this->civiapi('OptionValue', 'GetSingle', array('option_group_id' => 'contribution_status', 'name' => 'In Progress'));
 		$this->statusses['contribution']['partially_paid'] 	= $this->civiapi('OptionValue', 'GetSingle', array('option_group_id' => 'contribution_status', 'name' => 'Partially paid'));
@@ -66,7 +66,7 @@ class CRM_Export_Form_BoekhoudingExport extends CRM_Core_Form {
 			parent::postProcess();
 			CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/boekhouding-exports'));
 		} else {
-			$this->assign("errorMessage", "Geen participanten gevonden in de opgegeven datum range.");
+			$this->assign("errorMessage", "Geen deelnemers gevonden in de opgegeven datumrange.");
 		}
 	}
 	

@@ -1,6 +1,6 @@
 <div class="crm-content-block crm-block">
 	<a href="{ $nieuw_url }" class="button" style="float:left; margin-bottom: 10px;"><span>Nieuwe export</span></a><div style="clear:both;"></div>
-	<div id="help">Hieronder vind u een lijst met alle boekhouding exports gesorteerd op datum</div>
+	<div id="help">Hieronder vindt u een lijst met alle boekhoud-exports gesorteerd op datum.</div>
 	<div id="boekhoudingexport-wrapper">
 		<table id="boekhoudingexport-table">
 			<thead>

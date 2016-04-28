@@ -1,4 +1,4 @@
-<div class="help">Geef in dit formulier de export parameters op en druk vervolgens op exporteren</div>
+<div class="help">Geef in dit formulier de export-parameters op en druk vervolgens op exporteren</div>
 {if $errorMessage } <div class="crm-error">{ $errorMessage }</div>{/if}
 {foreach from=$elementNames item=elementName}
   <div class="crm-section">
